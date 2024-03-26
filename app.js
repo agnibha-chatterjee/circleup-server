@@ -1,8 +1,12 @@
 import 'dotenv/config';
+
 import express from 'express';
 import morgan from 'morgan';
-import sampleRouter from './routes/sample.routes.js';
-import connectToMongo from './db/mongo-connection.js';
+import { sampleRouter } from './routes/sample.routes.js';
+import { connectToMongo } from './db/mongo-connection.js';
+import { checkIfEnvExists } from './utils/check-if-env-exists.js';
+
+checkIfEnvExists();
 
 const app = express();
 
