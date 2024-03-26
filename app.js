@@ -2,10 +2,13 @@ import 'dotenv/config';
 import express from 'express';
 import morgan from 'morgan';
 import sampleRouter from './routes/sample.routes.js';
+import connectToMongo from './db/mongo-connection.js';
 
 const app = express();
 
-app.use(morgan('tiny'));
+connectToMongo();
+
+app.use(morgan('combined'));
 app.use('/api', sampleRouter);
 
 const PORT = process.env.PORT || 3000;
